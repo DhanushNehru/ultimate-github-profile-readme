@@ -3,26 +3,26 @@ document.addEventListener("DOMContentLoaded", async function () {
     const profilesDiv = document.getElementById("profiles");
 
     for (const category of categories) {
-        const response = await fetch(`../profiles/${category}/`);
-        if (!response.ok) continue;
+        try {
+            const response = await fetch(`../profiles/${category}.txt`);
+            if (!response.ok) continue;
 
-        const text = await response.text();
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(text, "text/html");
-        const files = [...doc.querySelectorAll("a")].map(a => a.href).filter(href => href.endsWith(".md"));
+            const text = await response.text();
+            const links = text.split("\n").filter(link => link.trim() !== "");
 
-        if (files.length > 0) {
-            const categoryDiv = document.createElement("div");
-            categoryDiv.innerHTML = `<h3>${category.replace("-", " ").toUpperCase()}</h3><ul></ul>`;
-            const list = categoryDiv.querySelector("ul");
+            if (links.length > 0) {
+                const categoryDiv = document.createElement("div");
+                categoryDiv.innerHTML = `<h3>${category.replace("-", " ").toUpperCase()}</h3><ul></ul>`;
+                const list = categoryDiv.querySelector("ul");
 
-            files.forEach(file => {
-                const fileName = file.split("/").pop().replace(".md", "");
-                const profileLink = `https://github.com/${fileName}`;
-                list.innerHTML += `<li><a href="${profileLink}" target="_blank">${fileName}</a></li>`;
-            });
+                links.forEach(link => {
+                    list.innerHTML += `<li><a href="${link}" target="_blank">${link.replace("https://github.com/", "")}</a></li>`;
+                });
 
-            profilesDiv.appendChild(categoryDiv);
+                profilesDiv.appendChild(categoryDiv);
+            }
+        } catch (error) {
+            console.error(`Failed to load ${category}.txt`, error);
         }
     }
 });
