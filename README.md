@@ -20,6 +20,23 @@ We have categorized READMEs to make browsing easier:
 
 ---
 
+#### 📌 Minimal 
+- [DhanushNehru](https://github.com/DhanushNehru/DhanushNehru)
+
+#### 🎨 Creative 
+- [DhanushNehru](https://github.com/DhanushNehru/DhanushNehru)
+
+#### 👨‍💻 Developer-Focused
+- [DhanushNehru](https://github.com/DhanushNehru/DhanushNehru)
+
+#### 🎞 Animated 
+- [DhanushNehru](https://github.com/DhanushNehru/DhanushNehru)
+
+#### 📊 Stats-Heavy 
+- [DhanushNehru](https://github.com/DhanushNehru/DhanushNehru)
+
+---
+
 ## 🌟 Featured READMEs  
 ✨ Check out some of the best GitHub profile READMEs:  
 
